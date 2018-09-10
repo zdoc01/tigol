@@ -1,0 +1,36 @@
+{
+  "name": "tigol",
+  "version": "0.0.1",
+  "description": "Log work done throughout the day at configured time intervals",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "nf start",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "electron",
+    "time",
+    "log"
+  ],
+  "author": "Zachary Lumpkins",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "electron": "^2.0.8",
+    "foreman": "^3.0.1",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "dependencies": {
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-hot-loader": "^4.3.6"
+  }
+}
