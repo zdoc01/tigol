@@ -3,7 +3,7 @@ const path = require('path');
 const url = require('url');
 
 const createWindow = (config) => {
-  const { height, template, width } = config;
+  const { height, route, width } = config;
   
   // Create the browser window.
   let win = new BrowserWindow({ height, width });
@@ -11,8 +11,8 @@ const createWindow = (config) => {
   // and load the index.html of the app.
   // win.loadFile(template);
 
-  const startUrl = process.env.ELECTRON_START_URL || url.format({
-    pathname: path.join(__dirname, template),
+  const startUrl = process.env.ELECTRON_START_URL && `${process.env.ELECTRON_START_URL}#${route}` || url.format({
+    pathname: path.join(__dirname, route),
     protocol: 'file:',
     slashes: true
   });
@@ -31,7 +31,8 @@ const initMainWin = () => {
   win = createWindow({
     height: 600,
     width: 600,
-    template: 'index.html'
+    template: 'index.html',
+    route: '/'
   });
 
   // Emitted when the window is closed.
@@ -51,7 +52,7 @@ const initLogEntryWin = () => {
   logEntry = createWindow({
     height: 200,
     width: 400,
-    template: 'log-entry.html'
+    route: '/entry'
   });
   
   // Emitted when the window is closed.
@@ -65,7 +66,7 @@ const initLogEntryWin = () => {
 
 const onReady = () => {
   initMainWin();
-  // TODO make configurable
+  // TODO make interval configurable
   setInterval(initLogEntryWin, 10000);
 };
 

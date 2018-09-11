@@ -1,6 +1,6 @@
 const exec = require('child_process').exec;
 const net = require('net');
-const PORT = 8080; // webpack-dev-server port
+const PORT = 3000; // webpack-dev-server port
 
 process.env.ELECTRON_START_URL = `http://localhost:${PORT}`;
 
