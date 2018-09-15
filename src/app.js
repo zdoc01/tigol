@@ -7,31 +7,23 @@ import Home from './home';
 import LogWork from './log-work';
 import NotFound from './not-found';
 
-const ipcRenderer = electron.ipcRenderer;
+import getLogs from './utils/get-logs';
 
-const getEntries = () => {
-  let entries;
-  try {
-    entries = JSON.parse(localStorage.getItem('entries')) || [];
-  } catch(e) {
-    entries = [];
-  }
-  return entries;
-};
+const ipcRenderer = electron.ipcRenderer;
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      entries: getEntries()
+      entries: getLogs()
     };
 
     // sent from `main` process
     ipcRenderer.on('log:entry:new', (evt) => {
       // new entry was added to local storage, so
       // we just need to fetch it and re-render the list
-      this.setState({ entries: getEntries() });
+      this.setState({ entries: getLogs() });
     });
 
     this.onAddEntry = this.onAddEntry.bind(this);
