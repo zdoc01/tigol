@@ -16,38 +16,38 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      entries: getLogs()
+      logs: getLogs()
     };
 
     // sent from `main` process
-    ipcRenderer.on('log:entry:new', (evt) => {
+    ipcRenderer.on('log:add', (evt) => {
       // new entry was added to local storage, so
       // we just need to fetch it and re-render the list
-      this.setState({ entries: getLogs() });
+      this.setState({ logs: getLogs() });
     });
 
-    this.onAddEntry = this.onAddEntry.bind(this);
+    this.onAddLog = this.onAddLog.bind(this);
   }
 
-  onAddEntry(evt, entry) {
-    const entries = [...this.state.entries, entry];
+  onAddLog(evt, entry) {
+    const logs = [...this.state.logs, entry];
     
-    localStorage.setItem('entries', JSON.stringify(entries));
-    this.setState({ entries });
+    localStorage.setItem('logs', JSON.stringify(logs));
+    this.setState({ logs });
     
     // Send message to `main` that new entry was logged
     // `main` will close the Entry window when it receives the message
-    ipcRenderer.send('log:entry:new');
+    ipcRenderer.send('log:add');
   }
 
   render() {
     return (
       <Switch>
         <Route path="/log" exact render={props => (
-          <LogWork {...props} onAddEntry={this.onAddEntry}/>
+          <LogWork {...props} onAddLog={this.onAddLog}/>
         )}/>
         <Route path="/" render={props => (
-          <Home {...props} entries={this.state.entries}/>
+          <Home {...props} logs={this.state.logs}/>
         )}/>
         <Route component={NotFound}/>
       </Switch>

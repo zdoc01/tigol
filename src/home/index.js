@@ -3,15 +3,15 @@ import { Link, Route } from 'react-router-dom';
 
 import Welcome from '../welcome';
 import Dashboard from '../dashboard';
-import Entries from '../entries';
+import Logs from '../logs';
 
-const Home = ({ entries }) => (
+const Home = ({ logs }) => (
   <div>
     <div className="sidebar">
       <nav>
         <ul>
           <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/logs">Entries</Link></li>
+          <li><Link to="/logs">logs</Link></li>
         </ul>
       </nav>
     </div>
@@ -19,7 +19,7 @@ const Home = ({ entries }) => (
       <Route path="/" exact component={Welcome}/>
       <Route path="/dashboard" component={Dashboard}/>
       <Route path="/logs" render={props => (
-        <Entries {...props} entries={entries}/>
+        <Logs {...props} logs={logs}/>
       )}/>
     </main>
   </div>

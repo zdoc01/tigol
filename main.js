@@ -44,30 +44,30 @@ const initMainWin = () => {
   });
 };
 
-let logEntry;
-const initLogEntryWin = () => {
+let logWork;
+const initlogWorkWin = () => {
   // only ever show one entry window
-  if (logEntry) { return; }
+  if (logWork) { return; }
 
-  logEntry = createWindow({
+  logWork = createWindow({
     height: 200,
     width: 400,
     route: '/log'
   });
   
   // Emitted when the window is closed.
-  logEntry.on('closed', () => {
+  logWork.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    logEntry = null;
+    logWork = null;
   });
 };
 
 const onReady = () => {
   initMainWin();
   // TODO make interval configurable
-  setInterval(initLogEntryWin, 10000);
+  setInterval(initlogWorkWin, 10000);
 };
 
 // This method will be called when Electron has finished
@@ -92,7 +92,7 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('log:entry:new', (evt) => {
-  win && win.webContents.send('log:entry:new');
-  logEntry && logEntry.destroy();
+ipcMain.on('log:add', (evt) => {
+  win && win.webContents.send('log:add');
+  logWork && logWork.destroy();
 });

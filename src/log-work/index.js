@@ -15,8 +15,8 @@ class LogWork extends Component {
     evt.preventDefault();
 
     if (this.input.value) {
-      if (this.props.onSubmit) {
-        this.props.onSubmit(evt, this.input.value);
+      if (this.props.onAddLog) {
+        this.props.onAddLog(evt, this.input.value);
       }
 
       // reset field
@@ -29,8 +29,8 @@ class LogWork extends Component {
       <form onSubmit={this.onSubmit}>
         <fieldset>
           <legend>Whatcha workin' on?</legend>
-          <label htmlFor="log-entry">
-            <input ref={this.setInputRef} name="log-entry" type="text"/>
+          <label htmlFor="log-message">
+            <input ref={this.setInputRef} name="log-message" type="text"/>
           </label>
           <button type="submit">Log it!</button>
         </fieldset>
