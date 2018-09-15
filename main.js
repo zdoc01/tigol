@@ -52,7 +52,7 @@ const initLogEntryWin = () => {
   logEntry = createWindow({
     height: 200,
     width: 400,
-    route: '/entry'
+    route: '/log'
   });
   
   // Emitted when the window is closed.
