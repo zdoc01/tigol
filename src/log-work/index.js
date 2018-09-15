@@ -16,7 +16,11 @@ class LogWork extends Component {
 
     if (this.input.value) {
       if (this.props.onAddLog) {
-        this.props.onAddLog(evt, this.input.value);
+        const data = {
+          message: this.input.value,
+          timestamp: +new Date()
+        };
+        this.props.onAddLog(evt, data);
       }
 
       // reset field

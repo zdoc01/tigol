@@ -29,8 +29,8 @@ class App extends Component {
     this.onAddLog = this.onAddLog.bind(this);
   }
 
-  onAddLog(evt, entry) {
-    const logs = [...this.state.logs, entry];
+  onAddLog(evt, log) {
+    const logs = [...this.state.logs, log];
     
     localStorage.setItem('logs', JSON.stringify(logs));
     this.setState({ logs });
