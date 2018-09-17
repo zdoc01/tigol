@@ -1,0 +1,21 @@
+.root {
+  /* color: red; */
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list > li {
+  display: flex;
+  border-bottom: 1px solid;
+}
+
+.list > li > a {
+  flex: 1;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+}

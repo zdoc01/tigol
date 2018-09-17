@@ -3,6 +3,9 @@ import electron from './electron';
 import { Route, Switch } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
+/* CSS Reset */
+import './normalize.css';
+
 import Home from './home';
 import LogWork from './log-work';
 import NotFound from './not-found';
